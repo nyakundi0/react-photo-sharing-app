@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { LoginScreen, RegistrationScreen, DashboardScreen } from '..';
-
+import { LoginScreen, RegistrationScreen, DashboardScreen } from './screens';
 
 export default function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -13,9 +12,9 @@ export default function App() {
   return isRegistered ? (
     <LoginScreen
       onRegisterPress={() => setIsRegistered(false)}
-      onLogin={() => setIsLoggedIn(true)}
+      onLoginPress={() => setIsLoggedIn(true)} // Added missing prop for LoginScreen
     />
   ) : (
-    <RegistrationScreen onLoginPress={() => setIsRegistered(true)} />
+    <RegistrationScreen onRegisterComplete={() => setIsRegistered(true)} />
   );
 }
